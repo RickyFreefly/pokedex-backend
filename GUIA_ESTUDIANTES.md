@@ -37,7 +37,7 @@ tipos TypeScript automáticamente con alguna herramienta (ej. `openapi-typescrip
 | Método | Ruta                       | Para qué sirve                                               |
 |--------|----------------------------|---------------------------------------------------------------|
 | GET    | `/health`                  | Comprobar que el servicio está vivo                            |
-| GET    | `/api/pokemon`             | Lista paginada de los 150 pokemon                              |
+| GET    | `/api/pokemon`             | Lista paginada de los 151 pokemon                              |
 | GET    | `/api/pokemon/:idOrName`   | Detalle de un pokemon (por número o por nombre en minúsculas)  |
 | GET    | `/api/types`               | Lista de los 17 tipos con cuántos pokemon tiene cada uno        |
 | GET    | `/api/types/:name/pokemon` | Pokemon que pertenecen a un tipo                                |
@@ -121,7 +121,7 @@ async function getTypes() {
       "artwork": "https://...png"
     }
   ],
-  "meta": { "total": 150, "limit": 20, "offset": 0 }
+  "meta": { "total": 151, "limit": 20, "offset": 0 }
 }
 ```
 

@@ -1,6 +1,6 @@
 # Pokedex Backend (Gen I)
 
-API REST con los primeros 150 Pokemon, pensada como backend para una PWA tipo "Pokedex".
+API REST con los 151 Pokemon de la primera generacion, pensada como backend para una PWA tipo "Pokedex".
 
 ## Stack
 
@@ -21,7 +21,7 @@ API REST con los primeros 150 Pokemon, pensada como backend para una PWA tipo "P
 npm install
 cp .env.example .env        # ajusta PORT / CORS_ORIGIN si hace falta
 npx prisma migrate dev --name init   # crea prisma/dev.db y aplica el esquema
-npm run db:seed             # descarga los 150 pokemon desde PokeAPI (~1-2 min)
+npm run db:seed             # descarga los 151 pokemon desde PokeAPI (~1-2 min)
 npm run dev                 # levanta el servidor en modo watch
 ```
 
@@ -72,7 +72,7 @@ curl "http://localhost:3000/api/types/fire/pokemon"
 ## Despliegue público (Render)
 
 Este repo es el backend de un ejercicio de curso: se publica una sola vez y cada
-estudiante construye su propia PWA consumiéndolo. El dataset es fijo (150 pokemon,
+estudiante construye su propia PWA consumiéndolo. El dataset es fijo (151 pokemon,
 sin escrituras en producción), así que el seed se "hornea" en el build en vez de
 correr en cada arranque — así el servicio despierta rápido tras dormirse por
 inactividad (free tier) sin depender de que PokeAPI esté disponible en ese momento.
@@ -82,7 +82,7 @@ inactividad (free tier) sin depender de que PokeAPI esté disponible en ese mome
 3. Render detecta `render.yaml` automáticamente (build command, start command,
    healthcheck en `/health`, variables de entorno). Click **Apply**.
 4. El primer build tarda ~1-2 min extra porque corre `npm run db:seed` (descarga
-   los 150 pokemon desde PokeAPI). Deploys siguientes son iguales: si cambias
+   los 151 pokemon desde PokeAPI). Deploys siguientes son iguales: si cambias
    código, el seed se vuelve a correr automáticamente en cada build.
 5. Comparte con los estudiantes la URL pública que te da Render, por ejemplo
    `https://pokedex-backend-xxxx.onrender.com`, y su Swagger en

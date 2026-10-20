@@ -10,7 +10,7 @@ import {
   type PokeApiSpecies,
 } from "../src/lib/pokeapi.js";
 
-const POKEMON_COUNT = 150;
+const POKEMON_COUNT = 151;
 const BATCH_SIZE = 10;
 
 interface RawRecord {

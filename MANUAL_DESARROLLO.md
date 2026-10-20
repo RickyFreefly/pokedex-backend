@@ -34,7 +34,7 @@ schema y la serializa.
 
 ## 2. Modelo de datos
 
-### `Pokemon` (150 filas, ids 1-150, gen I)
+### `Pokemon` (151 filas, ids 1-151, gen I completa — incluye a Mew)
 
 | Campo | Tipo | Contenido |
 |---|---|---|
@@ -75,7 +75,7 @@ Lo siguiente **existe en PokeAPI pero no se descarga ni se guarda**:
 | Formas regionales/alternas (Alola, Galar, Hisui, Paldea) | No son gen I, fuera de alcance a propósito | Alto: cambia el modelo (un "pokemon" dejaría de ser 1:1 con el id de pokedex) |
 | Debilidades/resistencias por tipo | Se puede derivar en el cliente cruzando tipos contra una tabla de efectividad fija (no cambia, no necesita backend) | N/A — recomendado calcularlo en el frontend |
 | Cries (sonido) | No pedido | Bajo: un campo más de URL, igual que los sprites |
-| Pokémon #151 en adelante | Alcance explícito es "primeros 150" | Alto: habría que revisar name collisions, nuevas evoluciones cross-gen, etc. |
+| Pokémon #152 en adelante (gen II+) | Alcance explícito es la primera generación completa (151) | Alto: habría que revisar name collisions, nuevas evoluciones cross-gen, etc. |
 
 Si se decide sumar alguno de estos, el patrón a seguir es siempre el mismo:
 1. Agregar el/los campos o modelos en `prisma/schema.prisma`.
@@ -95,11 +95,11 @@ y ejemplos de consumo en [`GUIA_ESTUDIANTES.md`](./GUIA_ESTUDIANTES.md).
 ## 4. El seed y por qué es así
 
 `prisma/seed.ts`:
-1. Pide a PokeAPI `pokemon/{id}` y `pokemon-species/{id}` para id 1..150, en
+1. Pide a PokeAPI `pokemon/{id}` y `pokemon-species/{id}` para id 1..151, en
    lotes de 10 concurrentes (`mapInBatches`, en `src/lib/pokeapi.ts`).
 2. Borra todas las tablas relacionadas con pokemon/tipos/habilidades.
 3. Crea `Type` y `Ability` (catálogos) primero.
-4. Inserta los 150 `Pokemon` **en orden ascendente de id**: esto es necesario
+4. Inserta los 151 `Pokemon` **en orden ascendente de id**: esto es necesario
    para que `evolvesFromId` siempre apunte a un registro que ya existe (en gen I
    las pre-evoluciones siempre tienen id menor).
 
@@ -116,7 +116,7 @@ producción (ver `render.yaml`) en vez de una sola vez a mano.
   (no el helper estricto `env()`) para que `prisma generate` no falle en una
   instalación limpia sin la variable todavía definida (nos pasó en el primer
   deploy a Render).
-- **SQLite en vez de Postgres**: el dataset es de solo lectura y fijo (150
+- **SQLite en vez de Postgres**: el dataset es de solo lectura y fijo (151
   filas), no hay necesidad de un servidor de BD aparte. Si en algún momento se
   agregan escrituras de usuarios (favoritos, cuentas, etc.), ahí sí conviene
   migrar a Postgres.

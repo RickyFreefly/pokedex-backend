@@ -27,7 +27,7 @@ Convención de estimación: XS / S / M / L (relativo, no horas).
 
 ## Épica 1 — Listado de Pokémon (Pokedex principal)
 
-- **1.1 — Grid/lista de los 150 pokemon con paginación** (M)
+- **1.1 — Grid/lista de los 151 pokemon con paginación** (M)
   Consumir `GET /api/pokemon?limit=&offset=`. Mostrar sprite, número (#001), nombre y tipos (badges) por tarjeta.
   _Criterio de aceptación:_ scroll infinito o paginación numerada; `meta.total` controla cuándo dejar de pedir más páginas.
 
@@ -109,7 +109,7 @@ Convención de estimación: XS / S / M / L (relativo, no horas).
 
 - Autenticación/usuarios, favoritos persistentes en servidor (podría ser backlog v2, requeriría nuevo endpoint `POST/GET /api/favorites` + tabla de usuarios).
 - Comparador de pokemon lado a lado.
-- Soporte multi-generación (el backend solo cubre los primeros 150).
+- Soporte multi-generación (el backend solo cubre la primera generación, 151 pokemon).
 - Internacionalización de nombres/flavorText (PokeAPI trae otros idiomas, pero el seed actual solo persiste inglés).
 
 ## Referencia rápida de contrato (backend)

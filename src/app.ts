@@ -16,7 +16,7 @@ export async function buildApp() {
     openapi: {
       info: {
         title: "Pokedex API (Gen I)",
-        description: "API REST con los primeros 150 Pokemon, pensada para alimentar una PWA tipo Pokedex.",
+        description: "API REST con los 151 Pokemon de la primera generacion, pensada para alimentar una PWA tipo Pokedex.",
         version: "1.0.0",
       },
     },

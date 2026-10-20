@@ -17,7 +17,7 @@ export async function pokemonRoutes(app: FastifyInstance) {
     "/api/pokemon",
     {
       schema: {
-        description: "Lista paginada de los 150 pokemon, con filtros opcionales.",
+        description: "Lista paginada de los 151 pokemon de la gen I, con filtros opcionales.",
         tags: ["pokemon"],
         querystring: {
           type: "object",
