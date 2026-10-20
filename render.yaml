@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: pokedex-backend
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: npm install --include=dev && npx prisma generate && npx prisma migrate deploy && npm run build && npm run db:seed
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        value: "file:./prisma/dev.db"
+      - key: HOST
+        value: "0.0.0.0"
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: NODE_VERSION
+        value: "24.17.0"

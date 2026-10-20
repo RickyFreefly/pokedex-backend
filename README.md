@@ -60,6 +60,33 @@ curl "http://localhost:3000/api/pokemon/pikachu"   # por nombre
 curl "http://localhost:3000/api/types/fire/pokemon"
 ```
 
+## Despliegue público (Render)
+
+Este repo es el backend de un ejercicio de curso: se publica una sola vez y cada
+estudiante construye su propia PWA consumiéndolo. El dataset es fijo (150 pokemon,
+sin escrituras en producción), así que el seed se "hornea" en el build en vez de
+correr en cada arranque — así el servicio despierta rápido tras dormirse por
+inactividad (free tier) sin depender de que PokeAPI esté disponible en ese momento.
+
+1. Entra a [render.com](https://render.com) → **New +** → **Blueprint**.
+2. Conecta tu cuenta de GitHub y selecciona el repo `pokedex-backend`.
+3. Render detecta `render.yaml` automáticamente (build command, start command,
+   healthcheck en `/health`, variables de entorno). Click **Apply**.
+4. El primer build tarda ~1-2 min extra porque corre `npm run db:seed` (descarga
+   los 150 pokemon desde PokeAPI). Deploys siguientes son iguales: si cambias
+   código, el seed se vuelve a correr automáticamente en cada build.
+5. Comparte con los estudiantes la URL pública que te da Render, por ejemplo
+   `https://pokedex-backend-xxxx.onrender.com`, y su Swagger en
+   `https://pokedex-backend-xxxx.onrender.com/docs`.
+
+> El free tier de Render duerme el servicio tras ~15 min sin tráfico; la primera
+> request después de dormir tarda ~30-50s en responder (cold start), las
+> siguientes son rápidas. Avísalo a los estudiantes para que no piensen que la
+> API está caída.
+
+`CORS_ORIGIN=*` queda abierto a propósito: cada estudiante consumirá la API desde
+un origen distinto (localhost en dev, su propio dominio de PWA en producción).
+
 ## Modelo de datos
 
 - `Pokemon`: datos base, stats (hp/attack/defense/specialAttack/specialDefense/speed), sprites, genero (genus), texto de pokedex, y referencia a su pre-evolucion (`evolvesFromId`, auto-relacion).
