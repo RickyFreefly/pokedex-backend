@@ -28,6 +28,10 @@ npm run dev                 # levanta el servidor en modo watch
 Servidor por defecto en `http://localhost:3000`.
 Documentacion interactiva (Swagger UI) en `http://localhost:3000/docs`.
 
+> ¿Eres estudiante y vas a **consumir** esta API para construir tu propia PWA?
+> Lee [`GUIA_ESTUDIANTES.md`](./GUIA_ESTUDIANTES.md) en vez de esta sección — ahí
+> están la URL pública, ejemplos de uso y el contrato de cada endpoint.
+
 ## Scripts
 
 | Script                  | Descripcion                                              |
