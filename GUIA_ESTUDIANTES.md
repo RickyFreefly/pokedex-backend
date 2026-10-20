@@ -6,12 +6,11 @@ Web App) tipo Pokedex sobre él. No necesitas tocar el backend: solo consumirlo.
 ## 1. URL base
 
 ```
-https://<REEMPLAZAR-CON-LA-URL-DEL-SERVICIO>.onrender.com
+https://pokedex-backend-g1ql.onrender.com
 ```
 
-> Tu profesor/a te dará la URL real una vez publicado el servicio. Reemplázala en
-> todos los ejemplos de esta guía y en la variable de entorno de tu propia app
-> (por ejemplo `VITE_API_URL` si usas Vite).
+> Usa esta URL en la variable de entorno de tu propia app (por ejemplo
+> `VITE_API_URL` si usas Vite).
 
 **Importante — "cold start":** el backend corre en un plan gratuito que se duerme
 tras ~15 minutos sin tráfico. La primera petición después de dormirse puede tardar
@@ -24,13 +23,13 @@ mostrar un estado de carga que contemple esto (ver Épica 1.4 del backlog).
 Antes de programar nada, abre el Swagger interactivo en el navegador:
 
 ```
-<URL_BASE>/docs
+https://pokedex-backend-g1ql.onrender.com/docs
 ```
 
 Ahí puedes ver todos los endpoints, sus parámetros, y probarlos con el botón
 **"Try it out"** directamente desde el navegador, sin Postman ni curl.
 
-El spec OpenAPI crudo (JSON) está en `<URL_BASE>/docs/json` por si quieres generar
+El spec OpenAPI crudo (JSON) está en `https://pokedex-backend-g1ql.onrender.com/docs/json` por si quieres generar
 tipos TypeScript automáticamente con alguna herramienta (ej. `openapi-typescript`).
 
 ## 3. Endpoints disponibles
@@ -55,30 +54,32 @@ tipos TypeScript automáticamente con alguna herramienta (ej. `openapi-typescrip
 ## 4. Ejemplos rápidos (curl)
 
 ```bash
+BASE="https://pokedex-backend-g1ql.onrender.com"
+
 # Salud del servicio
-curl "<URL_BASE>/health"
+curl "$BASE/health"
 
 # Primeros 10 pokemon
-curl "<URL_BASE>/api/pokemon?limit=10"
+curl "$BASE/api/pokemon?limit=10"
 
 # Buscar por nombre
-curl "<URL_BASE>/api/pokemon?search=char"
+curl "$BASE/api/pokemon?search=char"
 
 # Filtrar por tipo
-curl "<URL_BASE>/api/pokemon?type=water&limit=10"
+curl "$BASE/api/pokemon?type=water&limit=10"
 
 # Detalle por id o por nombre
-curl "<URL_BASE>/api/pokemon/25"
-curl "<URL_BASE>/api/pokemon/pikachu"
+curl "$BASE/api/pokemon/25"
+curl "$BASE/api/pokemon/pikachu"
 
 # Tipos disponibles
-curl "<URL_BASE>/api/types"
+curl "$BASE/api/types"
 ```
 
 ## 5. Ejemplo en JavaScript (fetch, para tu PWA)
 
 ```js
-const API_BASE = import.meta.env.VITE_API_URL; // ej. https://pokedex-backend-xxxx.onrender.com
+const API_BASE = import.meta.env.VITE_API_URL; // https://pokedex-backend-g1ql.onrender.com
 
 async function getPokemonList({ limit = 20, offset = 0, search, type } = {}) {
   const params = new URLSearchParams({ limit, offset });
