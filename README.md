@@ -31,6 +31,11 @@ Documentacion interactiva (Swagger UI) en `http://localhost:3000/docs`.
 > ¿Eres estudiante y vas a **consumir** esta API para construir tu propia PWA?
 > Lee [`GUIA_ESTUDIANTES.md`](./GUIA_ESTUDIANTES.md) en vez de esta sección — ahí
 > están la URL pública, ejemplos de uso y el contrato de cada endpoint.
+>
+> ¿Vas a **mantener o extender** el backend? Lee
+> [`MANUAL_DESARROLLO.md`](./MANUAL_DESARROLLO.md) — ahí está la arquitectura,
+> el modelo de datos completo (qué trae y qué podría cargarse) y las decisiones
+> técnicas detrás de cada cosa.
 
 ## Scripts
 
